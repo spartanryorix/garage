@@ -16,8 +16,6 @@ def garage():
     cursor=connection.cursor()
 
     bm_data=''
-    yc_data=''
-    tf_data=''
     
     if request.method=='POST':
         carmodel=request.form.get('carmodel')
@@ -35,7 +33,6 @@ def garage():
 
         cursor.execute("SELECT bm_of_car.id, bm_of_car.brand, bm_of_car.model, tf_type_of_car.id, tf_type_of_car.transmission, tf_type_of_car.fuel, yc_of_car.id, yc_of_car.year, yc_of_car.color FROM bm_of_car LEFT JOIN tf_type_of_car ON bm_of_car.id = tf_type_of_car.brand_model_id LEFT JOIN yc_of_car ON bm_of_car.id = yc_of_car.brand_model_id;")
         bm_data = cursor.fetchall()
-        print(bm_data)
 
         cursor.close()
         connection.close()

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="h1 text-center custom-heading">Garage</h1><br>
+        <div class="row justify-content-center"> 
+           <div class="col-lg-4 col-md-6 mb-4">
+            <form method="POST" action="/">
+                <div class="mb-3">
+                    <label for="carbrand" class="form-label">Brand of the Car</label>
+                    <input type="text" class="form-control" name="carbrand" id="carbrand" required>
+                    <span id="insertbrand" class="form-text">
+                        Type the brand of the car.
+                    </span><br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="carmodel" class="form-label">Model of the Car</label>
+                    <input type="text" class="form-control" name="carmodel" id="carmodel" required>
+                    <span id="insertmodel" class="form-text">
+                        Type the model of the car.
+                    </span><br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="caryear" class="form-label">Year the Car was released</label>
+                    <input type="text" pattern="\d{4}" title="Please enter a four-digit year" placeholder="YYYY" maxlength="4" class="form-control" name="caryear" id="caryear" required>
+                    <span id="insertyear" class="form-text">
+                        Type the year the car was released.
+                    </span><br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="carcolor" class="form-label">Color of the Car</label>
+                    <input type="text" class="form-control" name="carcolor" id="carcolor" required>
+                    <span id="insertcolor" class="form-text">
+                        Type the color of the car.
+                    </span><br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="transmissiontype" class="form-label">Transmission type of the Car</label>
+                    <select class="form-select black-input" name="transmissiontype" id="transmissiontype" required>
+                        <option value="">Select Transmission Type</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Manual">Manual</option>
+                    </select>
+                    <span id="inserttransmission" class="form-text">
+                        Choose the transmission type of the car.
+                    </span><br><br>
+                </div>
+                <div class="mb-3">
+                    <label for="fueltype" class="form-label">Fuel type of the Car</label>
+                    <select class="form-select black-input" name="fueltype" id="fueltype" required>
+                        <option value="">Select Fuel Type</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                    </select> 
+                    <span id="fueltype" class="form-text">
+                        Choose the fuel type of the car.
+                    </span><br><br>
+                </div>
+                    <button type="submit" class="btn btn-primary">Submit</button><br>
+            </form> 
+           </div>
+           <div class="col-lg-8 col-md-10 col align-self-center">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Transmission Type</th>
+                        <th scope="col">Fuel Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in bm_data %}
+                    <tr>
+                        <td data-label="#"> {{ loop.index }} </td>
+                        <td data-label="Brand"> {{ row[1] }} </td>
+                        <td data-label="Model"> {{ row[2] }} </td>
+                        <td data-label="Year"> {{ row[7] }} </td>
+                        <td data-label="Color"> {{ row[8] }} </td>
+                        <td data-label="Transmission Type"> {{ row[4] }} </td>
+                        <td data-label="Fuel Type"> {{ row[5] }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+           </div>  
+        </div>
+    </div>
+
+</body>
+</html>
