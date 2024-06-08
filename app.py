@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request
 import mysql.connector
-import sys
 
 app=Flask(__name__)
 
